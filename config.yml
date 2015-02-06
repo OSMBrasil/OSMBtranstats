@@ -50,7 +50,7 @@ sources:
     -
         :type: :launchpad
         :name: 'Merkaator: Templates'
-        :default: '[https://translations.launchpad.net/merkaartor/trunk/+pots/templates/pt_BR/+details 1000%]'
+        :default: '[https://translations.launchpad.net/merkaartor/trunk/+pots/templates/pt_BR/+details 100%]'
     -
         :type: :googlecode
         :name: OSMAnd
