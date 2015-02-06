@@ -7,7 +7,9 @@ transifex = Transifex::Client.new(username: config['user'], password: config['pa
 
 date = Time.new.strftime('%d-%m-%Y')
 
-puts '''{| class="wikitable" style="text-align: center;"
+puts '''<noinclude>
+{{info|A tabela abaixo é gerada automaticamente pelo script disponível em https://github.com/OSMBrasil/OSMBtranstats }} 
+</noinclude>{| class="wikitable" style="text-align: center;"
 |+ Situação das Traduções
 |-
 !Ferramenta
