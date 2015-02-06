@@ -1,0 +1,92 @@
+user: USER
+
+pass: PASSOWORD
+
+sources:
+    -
+        :type: :github
+        :name: CheckAutopista (sem pt-br)
+        :default: '[https://github.com/k1wiosm/checkautopista/blob/master/lang/translations.js#L191-L227 código-fonte]'
+    -
+        :type: :transifex
+        :name: 'Editor ID: Core'
+        :project: id-editor
+        :resource: core
+    -
+        :type: :transifex
+        :name: 'Editor ID: Presets [http://www.openstreetmap.org/user/ImreSamu/diary/26365 (no dups)]'
+        :project: id-editor
+        :resource: presets
+    -
+        :type: :transifex
+        :name: HOT Tasking Manager
+        :project: osm-tasking-manager2
+        :resource: master
+    -
+        :type: :launchpad
+        :name: Keepright
+        :default: '[https://translations.launchpad.net/keepright/trunk/+pots/keepright/pt_BR/+details 100%]'
+    -
+        :type: :transifex
+        :name: Level0
+        :project: level0
+        :resource: messages
+    -
+        :type: :google
+        :name: GraphHopper
+        :default: '[http://bit.ly/1CM61na 100%]'
+    -
+        :type: :launchpad
+        :name: JOSM
+        :default: '[https://translations.launchpad.net/josm/trunk/+pots/josm/pt_BR/+details 98,6%]'
+    -
+        :type: :github
+        :name: Mapillary
+        :default: '[https://github.com/mapillary/mapillary_localization/blob/master/locales/pt-BR.coffee sources] [http://www.diffnow.com/?report=13g08 diff]'
+    -
+        :type: :launchpad
+        :name: Merkaator
+        :default: '[https://translations.launchpad.net/merkaartor/trunk/+pots/merkaartor/pt_BR/+details 98,3%]'
+    -
+        :type: :launchpad
+        :name: 'Merkaator: Templates'
+        :default: '[https://translations.launchpad.net/merkaartor/trunk/+pots/templates/pt_BR/+details 1000%]'
+    -
+        :type: :googlecode
+        :name: OSMAnd
+        :default: '[https://code.google.com/p/osmand/wiki/TranslateHelp how to add pt-BR] [https://hosted.weblate.org/projects/osmand/main weblate]'
+    -
+        :type: :transifex
+        :name: Overpass Turbo
+        :project: overpass-turbo
+        :resource: main
+    -
+        :type: :translatewiki
+        :name: 'OpenStreetMap: Site'
+        :default: '[http://translatewiki.net/w/i.php?title=Special:MessageGroupStats&group=out-osm-site 100%]'
+    -
+        :type: :page
+        :name: 'OpenStreetMap: Wiki'
+        :default: '[http://taginfo.openstreetmap.org/reports/languages keys 11,23%] [http://taginfo.openstreetmap.org/reports/languages tags 1,42%]'
+    -
+        :type: :github
+        :name: Taginfo
+        :default: '[https://github.com/joto/taginfo/blob/master/web/i18n/pt-BR.yml código-fonte] [http://www.diffnow.com/?report=pa5fs diff]'
+    -
+        :type: :transifex
+        :name: '[http://wheelmap.org Wheelmap - Site]'
+        :project: wheelmap-website # existem outros 4 recursos 
+    -
+        :type: :transifex
+        :name: '[https://play.google.com/store/apps/details?id=org.wheelmap.android.online Wheelmap - Android app]'
+        :project: wheelmap-android # existem 13 recursos 
+    -
+        :type: :transifex
+        :name: '[http://itunes.apple.com/de/app/wheelmap/id399239476?mt=8 Wheelmap - iOS app]'
+        :project: wheelmap-iphone
+        :resource: app_strings
+    -
+        :type: :transifex
+        :name: '[https://www.transifex.com/projects/p/poichecker Wheelmap - POI Checker]'
+        :project: poichecker
+        :resource: default
