@@ -1,9 +1,14 @@
-user: USER
-
-pass: PASSWORD
-
-info: '{{info|A tabela abaixo é gerada automaticamente pelo script disponível em https://github.com/OSMBrasil/OSMBtranstats}}'
-
+credentials:
+    transifex:
+        user: USER
+        pass: PASSWORD
+ui:
+    info: '{{info|A tabela abaixo é gerada automaticamente pelo script disponível em https://github.com/OSMBrasil/OSMBtranstats}}'
+    title: Situação das Traduções
+    columns:
+        tool: Ferramenta
+        status: Situação
+        date: Verificado em
 sources:
     -
         :type: :github

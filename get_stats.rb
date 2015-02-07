@@ -53,19 +53,19 @@ class SourcesPrinter
     def initialize(config)
         @config = config
         TransifexParser.client = Transifex::Client.new(
-                                    username: @config['user'],
-                                    password: @config['pass']
-                                )
+            username: @config['credentials']['transifex']['user'],
+            password: @config['credentials']['transifex']['pass']
+        )
     end
     def print_header
         puts '<noinclude>'
-        puts @config['info']
+        puts @config['ui']['info']
         puts '</noinclude>{| class="wikitable" style="text-align: center;"'
-        puts '|+ Situação das Traduções'
+        puts '|+ ' + @config['ui']['title']
         puts '|-'
-        puts '!Ferramenta'
-        puts '!Situação'
-        puts '!Verificado em'
+        puts '!' + @config['ui']['columns']['tool']
+        puts '!' + @config['ui']['columns']['status']
+        puts '!' + @config['ui']['columns']['date']
     end
     def print_sources
         date = Time.new.strftime('%d-%m-%Y')
