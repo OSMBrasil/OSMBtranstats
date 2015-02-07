@@ -68,13 +68,5 @@ Parsing documentation for transifex-ruby-0.0.4
 Installing ri documentation for transifex-ruby-0.0.4
 Done installing documentation for faraday, faraday_middleware, hashie, multipart-post, transifex-ruby after 5 seconds
 5 gems installed
-
-Alan@ALAN-NOTEBOOK MSYS /c/Alexandre/Git/GitHub/OSMBtranstats
-$ gem install settingslogic
-Successfully installed settingslogic-2.0.9
-Parsing documentation for settingslogic-2.0.9
-Installing ri documentation for settingslogic-2.0.9
-Done installing documentation for settingslogic after 1 seconds
-1 gem installed
 ```
 Agora ficou entendido que o transifex-ruby precisava instalar quatro dependências: multipart-pos, faraday, faraday_middleware, hashie. Isso foi feito automaticamente, a partir da Internet!
