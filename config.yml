@@ -3,7 +3,7 @@ credentials:
         user: USER
         pass: PASSWORD
 ui:
-    info: '{{info|A tabela abaixo é gerada automaticamente pelo script disponível em https://github.com/OSMBrasil/OSMBtranstats}}'
+    info: '{{info|Esta tabela é gerada automaticamente por script disponível em http://github.com/OSMBrasil/OSMBtranstats}}'
     title: Situação das Traduções
     columns:
         tool: Ferramenta
