@@ -73,9 +73,9 @@ sources:
         :name: 'OpenStreetMap: Site'
         :default: '[http://translatewiki.net/w/i.php?title=Special:MessageGroupStats&group=out-osm-site 100%]'
     -
-        :type: :page
+        :type: :taginfo
         :name: 'OpenStreetMap: Wiki'
-        :default: '[http://taginfo.openstreetmap.org/reports/languages keys 11,23%] [http://taginfo.openstreetmap.org/reports/languages tags 1,42%]'
+        :project: 'taginfo.openstreetmap.org'
     -
         :type: :github
         :name: Taginfo

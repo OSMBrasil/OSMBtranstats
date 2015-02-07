@@ -2,6 +2,7 @@ require 'transifex'
 require 'yaml'
 
 load 'noko_collectors.rb'
+load 'json_collectors.rb'
 
 config = YAML.load_file('config.yml')
 
@@ -12,6 +13,8 @@ class ItemParser
                 TransifexParser.new item
             when :launchpad
                 LaunchpadParser.new item
+            when :taginfo
+                TaginfoParser.new item
             else
                 ItemParser.new item
         end
@@ -24,8 +27,8 @@ class ItemParser
         message = @item[:default]
         return name, message
     end
-    def percentage_formatted(value)  # 92.324 or 92.324%
-        rounded = value.to_s.delete('%').to_f.round(1)  # 92.3
+    def percentage_formatted(value, precision = 1)  # 92.324 or 92.324%
+        rounded = value.to_s.delete('%').to_f.round(precision)  # 92.3
         integer = rounded.round
         return rounded.to_s + '%' unless rounded - integer == 0
         return integer.to_s + '%'
@@ -73,6 +76,17 @@ class LaunchpadParser < ItemParser
             launchpad = LaunchpadCollector.new @item[:project], @item[:resource]
         end
         message = percentage_formatted(launchpad.completed)
+        return name, message
+    end
+end
+
+class TaginfoParser < ItemParser
+    def result
+        name, message = super
+        taginfo = TaginfoCollector.new @item[:project]
+        keys_percent = percentage_formatted(taginfo.completed_keys, 2)
+        tags_percent = percentage_formatted(taginfo.completed_tags, 2)
+        message = 'keys %s / tags %s' % [keys_percent, tags_percent]
         return name, message
     end
 end
