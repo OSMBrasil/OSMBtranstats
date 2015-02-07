@@ -1,6 +1,8 @@
 user: USER
 
-pass: PASSOWORD
+pass: PASSWORD
+
+info: '{{info|A tabela abaixo é gerada automaticamente pelo script disponível em https://github.com/OSMBrasil/OSMBtranstats}}'
 
 sources:
     -

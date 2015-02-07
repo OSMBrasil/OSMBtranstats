@@ -3,53 +3,98 @@ require 'yaml'
 
 config = YAML.load_file('config.yml')
 
-transifex = Transifex::Client.new(username: config['user'], password: config['pass'])
+class ItemParser
+    def ItemParser.factory item
+        if item[:type] == :transifex then
+            TransifexParser.new item
+        else
+            ItemParser.new item
+        end
+    end
+    def initialize(item)
+        @item = item
+    end
+    def result
+        name = @item[:name]
+        message = @item[:default]
+        return name, message
+    end
+end
 
-date = Time.new.strftime('%d-%m-%Y')
+class TransifexParser < ItemParser
+    @@client = nil
+    def self.client=client
+        @@client = client
+    end
+    def result
+        name, message = super
+        project = @@client.project(@item[:project])
+        if @item[:resource] != nil then
+            resource = project.resource(@item[:resource])
+            stats = resource.stats(:pt_BR)
+            message = stats.completed
+        else
+            translated_words = 0
+            untranslated_words = 0
+            project.resources.each do |resource|
+                stats = resource.stats(:pt_BR)
+                translated_words += stats.translated_words
+                untranslated_words += stats.untranslated_words
+            end
+            total_words = translated_words + untranslated_words
+            percent = (translated_words.to_f / total_words) * 100
+            message = percent.round.to_s + '%'
+        end
+        return name, message
+    end
+end
 
-puts '''<noinclude>
-{{info|A tabela abaixo é gerada automaticamente pelo script disponível em https://github.com/OSMBrasil/OSMBtranstats }} 
-</noinclude>{| class="wikitable" style="text-align: center;"
-|+ Situação das Traduções
-|-
-!Ferramenta
-!Situação
-!Verificado em
-'''
+class SourcesPrinter
+    def initialize(config)
+        @config = config
+        TransifexParser.client = Transifex::Client.new(
+                                    username: @config['user'],
+                                    password: @config['pass']
+                                )
+    end
+    def print_header
+        puts '<noinclude>'
+        puts @config['info']
+        puts '</noinclude>{| class="wikitable" style="text-align: center;"'
+        puts '|+ Situação das Traduções'
+        puts '|-'
+        puts '!Ferramenta'
+        puts '!Situação'
+        puts '!Verificado em'
+    end
+    def print_sources
+        date = Time.new.strftime('%d-%m-%Y')
+        @config["sources"].each do |item|
+            parser = ItemParser.factory item
+            name, message = parser.result
+            puts '|-'
+            puts '|' + name
+            puts '|' + message
+            puts '|' + date
+        end
+    end
+    def print_footer
+        puts '|}'
+    end
+    def execute
+        print_header
+        print_sources
+        print_footer
+    end
+    private :print_header, :print_sources, :print_footer
+end
 
 begin
-    config["sources"].each do |item|
-        name = item[:name]
-        if item[:type] == :transifex then
-            project = transifex.project(item[:project])
-            if item[:resource] != nil then
-                resource = project.resource(item[:resource])
-                stats = resource.stats(:pt_BR)
-                message = stats.completed
-            else
-                translated_words = 0
-                untranslated_words = 0
-                project.resources.each do |resource|
-                    stats = resource.stats(:pt_BR)
-                    translated_words += stats.translated_words
-                    untranslated_words += stats.untranslated_words
-                end
-                total_words = translated_words + untranslated_words
-                percent = (translated_words.to_f / total_words) * 100
-                message = percent.round.to_s + '%'
-            end
-        else
-            message = item[:default]
-        end
-        puts '|-'
-        puts '|' + name
-        puts '|' + message
-        puts '|' + date
-    end
+    printer = SourcesPrinter.new(config)
+    printer.execute
 rescue Transifex::NotFound, URI::InvalidURIError => e
     puts
     puts e.to_yaml
     puts
 end
 
-puts '|}'
