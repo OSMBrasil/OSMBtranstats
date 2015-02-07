@@ -21,11 +21,14 @@ class ItemParser
     end
 end
 
-class TransifexParser < ItemParser
+class SpecializedParser < ItemParser
     @@client = nil
     def self.client=client
         @@client = client
     end
+end
+
+class TransifexParser < SpecializedParser
     def result
         name, message = super
         project = @@client.project(@item[:project])
