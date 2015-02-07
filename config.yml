@@ -32,7 +32,7 @@ sources:
     -
         :type: :launchpad
         :name: Keepright
-        :default: '[https://translations.launchpad.net/keepright/trunk/+pots/keepright/pt_BR/+details 100%]'
+        :project: 'keepright'
     -
         :type: :transifex
         :name: Level0
@@ -45,7 +45,7 @@ sources:
     -
         :type: :launchpad
         :name: JOSM
-        :default: '[https://translations.launchpad.net/josm/trunk/+pots/josm/pt_BR/+details 98,6%]'
+        :project: 'josm'
     -
         :type: :github
         :name: Mapillary
@@ -53,11 +53,12 @@ sources:
     -
         :type: :launchpad
         :name: Merkaator
-        :default: '[https://translations.launchpad.net/merkaartor/trunk/+pots/merkaartor/pt_BR/+details 98,3%]'
+        :project: 'merkaartor'
     -
         :type: :launchpad
         :name: 'Merkaator: Templates'
-        :default: '[https://translations.launchpad.net/merkaartor/trunk/+pots/templates/pt_BR/+details 100%]'
+        :project: 'merkaartor'
+        :resource: 'templates'
     -
         :type: :googlecode
         :name: OSMAnd
@@ -82,11 +83,11 @@ sources:
     -
         :type: :transifex
         :name: '[http://wheelmap.org Wheelmap - Site]'
-        :project: wheelmap-website # existem outros 4 recursos 
+        :project: wheelmap-website # existem 5 recursos
     -
         :type: :transifex
         :name: '[https://play.google.com/store/apps/details?id=org.wheelmap.android.online Wheelmap - Android app]'
-        :project: wheelmap-android # existem 13 recursos 
+        :project: wheelmap-android # existem 13 recursos
     -
         :type: :transifex
         :name: '[http://itunes.apple.com/de/app/wheelmap/id399239476?mt=8 Wheelmap - iOS app]'

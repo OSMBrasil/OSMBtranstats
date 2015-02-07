@@ -1,12 +1,16 @@
 require 'transifex'
 require 'yaml'
 
+load 'noko_collectors.rb'
+
 config = YAML.load_file('config.yml')
 
 class ItemParser
     def ItemParser.factory item
         if item[:type] == :transifex then
             TransifexParser.new item
+        elsif item[:type] == :launchpad then
+            LaunchpadParser.new item
         else
             ItemParser.new item
         end
@@ -48,6 +52,20 @@ class TransifexParser < SpecializedParser
             percent = (translated_words.to_f / total_words) * 100
             message = percent.round.to_s + '%'
         end
+        return name, message
+    end
+end
+
+class LaunchpadParser < ItemParser
+    def result
+        name, message = super
+        if @item[:resource] == nil then
+            launchpad = LaunchpadCollector.new @item[:project]
+        else
+            launchpad = LaunchpadCollector.new @item[:project], @item[:resource]
+        end
+        percent = launchpad.completed.delete('%').to_f
+        message = percent.round.to_s + '%'
         return name, message
     end
 end
