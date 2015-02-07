@@ -7,12 +7,13 @@ config = YAML.load_file('config.yml')
 
 class ItemParser
     def ItemParser.factory item
-        if item[:type] == :transifex then
-            TransifexParser.new item
-        elsif item[:type] == :launchpad then
-            LaunchpadParser.new item
-        else
-            ItemParser.new item
+        case item[:type]
+            when :transifex
+                TransifexParser.new item
+            when :launchpad
+                LaunchpadParser.new item
+            else
+                ItemParser.new item
         end
     end
     def initialize(item)
