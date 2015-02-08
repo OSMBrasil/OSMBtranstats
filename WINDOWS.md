@@ -1,6 +1,7 @@
 Como estudo de caso, o primeiro autor do script resolveu usar Ruby e Git no Windows, através do console [MSYS2](http://msys2.github.io). Mas nesta página somente é abordado o que se refere às dependências Ruby do OSMBtranstats.
 
 Dependências que precisam ser instaladas como extra:
+
 1. [transifex-ruby](#transifex-ruby)
 1. [nokogiri](#nokogiri)
 
