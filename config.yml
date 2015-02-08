@@ -32,7 +32,7 @@ sources:
     -
         :type: :launchpad
         :name: Keepright
-        :project: 'keepright'
+        :project: keepright
     -
         :type: :transifex
         :name: Level0
@@ -45,7 +45,7 @@ sources:
     -
         :type: :launchpad
         :name: JOSM
-        :project: 'josm'
+        :project: josm
     -
         :type: :github
         :name: Mapillary
@@ -53,12 +53,12 @@ sources:
     -
         :type: :launchpad
         :name: Merkaator
-        :project: 'merkaartor'
+        :project: merkaartor
     -
         :type: :launchpad
         :name: 'Merkaator: Templates'
-        :project: 'merkaartor'
-        :resource: 'templates'
+        :project: merkaartor
+        :resource: templates
     -
         :type: :googlecode
         :name: OSMAnd
@@ -71,11 +71,11 @@ sources:
     -
         :type: :translatewiki
         :name: 'OpenStreetMap: Site'
-        :project: 'out-osm-site'
+        :project: out-osm-site
     -
         :type: :taginfo
         :name: 'OpenStreetMap: Wiki'
-        :project: 'taginfo.openstreetmap.org'
+        :project: taginfo.openstreetmap.org
     -
         :type: :github
         :name: Taginfo
