@@ -1,6 +1,12 @@
-Como estudo de caso, o primeiro autor do script resolveu usar Ruby e Git no Windows, através do console MSYS2. Mas nesta página somente é abordado o que se refere às dependências Ruby do OSMBtranstats.
+Como estudo de caso, o primeiro autor do script resolveu usar Ruby e Git no Windows, através do console [MSYS2](http://msys2.github.io). Mas nesta página somente é abordado o que se refere às dependências Ruby do OSMBtranstats.
 
-A única dependência que precisa ser instalada como extra é o **[transifex-ruby](https://github.com/tmaesaka/transifex-ruby)**. O código dele está no GitHub. Como inicialmente o projeto  OSMBtranstats não resulta num gem, o mais prático é (1) clonar o repositório, (2) gerar manualmente o gem daquela dependência e (3) instalá-la.
+Dependências que precisam ser instaladas como extra:
+1. [transifex-ruby](#transifex-ruby)
+1. [nokogiri](#nokogiri)
+
+# transifex-ruby
+
+O [código](https://github.com/tmaesaka/transifex-ruby) está no GitHub. Como inicialmente o projeto  OSMBtranstats não resulta num gem, o mais prático é (1) clonar o repositório, (2) gerar manualmente o gem daquela dependência e (3) instalá-la.
 
 1) Clonar o repositório GitHub da dependência
 
@@ -70,3 +76,25 @@ Done installing documentation for faraday, faraday_middleware, hashie, multipart
 5 gems installed
 ```
 Agora ficou entendido que o transifex-ruby precisava instalar quatro dependências: multipart-pos, faraday, faraday_middleware, hashie. Isso foi feito automaticamente, a partir da Internet!
+
+# nokogiri
+
+1) Fazer download de [nokogiri-1.6.5-x86-mingw32.gem](http://www.nokogiri.org/tutorials/installing_nokogiri.html#windows) **ou substituto**\*
+
+&nbsp;&nbsp;&nbsp;&nbsp;_\* Você usa 64 bits?_
+
+Esses arquivos vem preparados já embutindo as DLLs requeridas pelo Windows. Preferir o comando o `gem install nokogiri` exigiria o DevKit configurado previamente, para compilação de código nativo.
+
+2) Instalar: `gem install nokogiri-1.6.5-x86-mingw32.gem`
+
+```console
+$ gem install nokogiri-1.6.5-x86-mingw32.gem
+Nokogiri is built with the packaged libraries: libxml2-2.9.2, libxslt-1.1.28, zlib-1.2.8, libiconv-1.14.
+Successfully installed nokogiri-1.6.5-x86-mingw32
+Parsing documentation for nokogiri-1.6.5-x86-mingw32
+Installing ri documentation for nokogiri-1.6.5-x86-mingw32
+Done installing documentation for nokogiri after 10 seconds
+1 gem installed
+```
+
+É tudo!
