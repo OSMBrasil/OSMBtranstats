@@ -17,6 +17,8 @@ class ItemParser
                 TaginfoParser.new item
             when :translatewiki
                 TranslatewikiParser.new item
+            when :weblate
+                WeblateParser.new item
             else
                 ItemParser.new item
         end
@@ -98,6 +100,15 @@ class TranslatewikiParser < ItemParser
         name, message = super
         translatewiki = TranslatewikiCollector.new @item[:project]
         message = percentage_formatted(translatewiki.completed)
+        return name, message
+    end
+end
+
+class WeblateParser < ItemParser
+    def result
+        name, message = super
+        weblate = WeblateCollector.new @item[:project], @item[:resource]
+        message = percentage_formatted(weblate.completed)
         return name, message
     end
 end

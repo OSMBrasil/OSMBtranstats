@@ -60,9 +60,10 @@ sources:
         :project: merkaartor
         :resource: templates
     -
-        :type: :googlecode
+        :type: :weblate
         :name: OSMAnd
-        :default: '[https://code.google.com/p/osmand/wiki/TranslateHelp how to add pt-BR] [https://hosted.weblate.org/projects/osmand/main weblate]'
+        :project: osmand
+        :resource: main
     -
         :type: :transifex
         :name: Overpass Turbo
