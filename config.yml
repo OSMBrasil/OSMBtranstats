@@ -71,7 +71,7 @@ sources:
     -
         :type: :translatewiki
         :name: 'OpenStreetMap: Site'
-        :default: '[http://translatewiki.net/w/i.php?title=Special:MessageGroupStats&group=out-osm-site 100%]'
+        :project: 'out-osm-site'
     -
         :type: :taginfo
         :name: 'OpenStreetMap: Wiki'

@@ -15,6 +15,8 @@ class ItemParser
                 LaunchpadParser.new item
             when :taginfo
                 TaginfoParser.new item
+            when :translatewiki
+                TranslatewikiParser.new item
             else
                 ItemParser.new item
         end
@@ -87,6 +89,15 @@ class TaginfoParser < ItemParser
         keys_percent = percentage_formatted(taginfo.completed_keys, 2)
         tags_percent = percentage_formatted(taginfo.completed_tags, 2)
         message = 'keys %s / tags %s' % [keys_percent, tags_percent]
+        return name, message
+    end
+end
+
+class TranslatewikiParser < ItemParser
+    def result
+        name, message = super
+        translatewiki = TranslatewikiCollector.new @item[:project]
+        message = percentage_formatted(translatewiki.completed)
         return name, message
     end
 end
