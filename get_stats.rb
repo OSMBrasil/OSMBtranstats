@@ -3,6 +3,7 @@ require 'yaml'
 
 load 'noko_collectors.rb'
 load 'json_collectors.rb'
+load 'file_collectors.rb'
 
 config = YAML.load_file('config.yml')
 
@@ -19,6 +20,8 @@ class ItemParser
                 TranslatewikiParser.new item
             when :weblate
                 WeblateParser.new item
+            when :github_yaml
+                GithubYAML_Parser.new item
             else
                 ItemParser.new item
         end
@@ -109,6 +112,19 @@ class WeblateParser < ItemParser
         name, message = super
         weblate = WeblateCollector.new @item[:project], @item[:resource]
         message = percentage_formatted(weblate.completed)
+        return name, message
+    end
+end
+
+class GithubYAML_Parser < ItemParser
+    def result
+        name, message = super
+        github_yaml = GithubYAML_Collector.new(
+            @item[:project],
+            @item[:resource_orig],
+            @item[:resource_dest]
+        )
+        message = percentage_formatted(github_yaml.completed)
         return name, message
     end
 end

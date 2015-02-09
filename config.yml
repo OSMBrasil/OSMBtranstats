@@ -11,7 +11,7 @@ ui:
         date: Verificado em
 sources:
     -
-        :type: :github
+        :type: :github_unknown
         :name: CheckAutopista (sem pt-br)
         :default: '[https://github.com/k1wiosm/checkautopista/blob/master/lang/translations.js#L191-L227 código-fonte]'
     -
@@ -47,9 +47,11 @@ sources:
         :name: JOSM
         :project: josm
     -
-        :type: :github
+        :type: :github_yaml
         :name: Mapillary
-        :default: '[https://github.com/mapillary/mapillary_localization/blob/master/locales/pt-BR.coffee sources] [http://www.diffnow.com/?report=13g08 diff]'
+        :project: mapillary/mapillary_localization
+        :resource_orig: locales/en.coffee
+        :resource_dest: locales/pt-BR.coffee
     -
         :type: :launchpad
         :name: Merkaator
@@ -78,9 +80,11 @@ sources:
         :name: 'OpenStreetMap: Wiki'
         :project: taginfo.openstreetmap.org
     -
-        :type: :github
+        :type: :github_yaml
         :name: Taginfo
-        :default: '[https://github.com/joto/taginfo/blob/master/web/i18n/pt-BR.yml código-fonte] [http://www.diffnow.com/?report=pa5fs diff]'
+        :project: joto/taginfo
+        :resource_orig: web/i18n/en.yml
+        :resource_dest: web/i18n/pt-BR.yml
     -
         :type: :transifex
         :name: '[http://wheelmap.org Wheelmap - Site]'
