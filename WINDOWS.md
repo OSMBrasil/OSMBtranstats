@@ -4,6 +4,7 @@ Dependências que precisam ser instaladas como extra:
 
 1. [transifex-ruby](#transifex-ruby)
 1. [nokogiri](#nokogiri)
+1. [yamldiff](#yamldiff)
 
 # transifex-ruby
 
@@ -13,6 +14,11 @@ O [código](https://github.com/tmaesaka/transifex-ruby) está no GitHub. Como in
 
 ````console
 $ git clone https://github.com/tmaesaka/transifex-ruby.git
+```
+
+E entrar no diretório de repositório clonado:
+````console
+$ cd transifex-ruby
 ```
 
 2) [Gerar](http://guides.rubygems.org/make-your-own-gem/) o gem da dependência: `gem build transifex-ruby.gemspec`
@@ -99,3 +105,96 @@ Done installing documentation for nokogiri after 10 seconds
 ```
 
 É tudo!
+
+# yamldiff
+
+Na realidade, trata-se do fork [alexandre-mbm/yamldiff](/alexandre-mbm/yamldiff), versão 0.0.10. Ele contém a busca por coincidências entre dois arquivos YAML.
+
+Note que a instalação dar-se-á como feito com o transifex-ruby, nossa primeira dependência.
+
+1) Clonar o repositório GitHub da dependência
+
+```console
+$ git clone https://github.com/alexandre-mbm/yamldiff.git
+Cloning into 'yamldiff'...
+remote: Counting objects: 192, done.
+remote: Compressing objects: 100% (109/109), done.
+remote: Total 192 (delta 63), reused 192 (delta 63)
+Receiving objects: 100% (192/192), 22.54 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (63/63), done.
+Checking connectivity... done.
+
+$ cd yamldiff
+```
+
+2) [Gerar](http://guides.rubygems.org/make-your-own-gem/) o gem da dependência
+
+Primeiro, empacotando as dependências indiretas:
+
+```console
+$ bundle
+DL is deprecated, please use Fiddle
+Your Gemfile lists the gem rspec (>= 0) more than once.
+You should probably keep only one of them.
+While it's not a problem now, it could cause errors if you change the version of just one of them later.
+Your Gemfile lists the gem fakefs (>= 0) more than once.
+You should probably keep only one of them.
+While it's not a problem now, it could cause errors if you change the version of just one of them later.
+Fetching gem metadata from https://rubygems.org/.........
+Resolving dependencies...
+Installing rake 10.4.2
+Installing diff-lcs 1.2.5
+Using diffy 3.0.7
+Installing fakefs 0.6.5
+Installing metaclass 0.0.4
+Installing mocha 1.1.0
+Installing rspec-support 3.2.1
+Installing rspec-core 3.2.0
+Installing rspec-expectations 3.2.0
+Installing rspec-mocks 3.2.0
+Installing rspec 3.2.0
+Using yamldiff 0.0.10 from source at .
+Using bundler 1.7.7
+Your bundle is complete!
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+```
+
+Em seguida, usando aquele pacote para criar o gem:
+
+```console
+$ gem build yamldiff.gemspec
+WARNING:  licenses is empty, but is recommended.  Use a license abbreviation from:
+http://opensource.org/licenses/alphabetical
+WARNING:  no homepage specified
+WARNING:  open-ended dependency on diffy (>= 0) is not recommended
+  if diffy is semantically versioned, use:
+    add_runtime_dependency 'diffy', '~> 0'
+WARNING:  open-ended dependency on fakefs (>= 0, development) is not recommended
+  if fakefs is semantically versioned, use:
+    add_development_dependency 'fakefs', '~> 0'
+WARNING:  open-ended dependency on rake (>= 0, development) is not recommended
+  if rake is semantically versioned, use:
+    add_development_dependency 'rake', '~> 0'
+WARNING:  open-ended dependency on rspec (>= 0, development) is not recommended
+  if rspec is semantically versioned, use:
+    add_development_dependency 'rspec', '~> 0'
+WARNING:  See http://guides.rubygems.org/specification-reference/ for help
+  Successfully built RubyGem
+  Name: yamldiff
+  Version: 0.0.10
+  File: yamldiff-0.0.10.gem
+```
+
+3) Instalar a dependência: `gem install yamldiff-0.0.10.gem`
+
+``` console
+$ gem install yamldiff-0.0.10.gem
+Successfully installed yamldiff-0.0.10
+Parsing documentation for yamldiff-0.0.10
+Installing ri documentation for yamldiff-0.0.10
+Done installing documentation for yamldiff after 0 seconds
+1 gem installed
+```
+
+Pronto!
+

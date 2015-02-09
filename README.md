@@ -1,6 +1,6 @@
 **OSMBtranstats** é o nome deste projeto que organiza-se em volta do script `get_stats.rb` e do arquivo de configurações [config.yml](config.yml). Quer significar "OpenStreetMap Brazil/Basic Translations's Statistics". São estatísticas básicas de traduções de software na comunidade [OpenStreetMap Brasil](http://www.openstreetmap.com.br).
 
-O uso do script reduz o tempo de manutenção da página wiki de [situação](http://wiki.openstreetmap.org/wiki/WikiProject_Brazil/Tradu%C3%A7%C3%B5es/Situa%C3%A7%C3%A3o) das traduções brasileiras a alguns segundos.
+O uso do script reduz o tempo de manutenção da página wiki de [situação](http://wiki.openstreetmap.org/wiki/WikiProject_Brazil/Tradu%C3%A7%C3%B5es/Situa%C3%A7%C3%A3o) das traduções brasileiras a alguns segundos ou menos de dois minutos, dependendo da qualidade da conexão à Internet.
 
 _**Intenções que estão colocadas de lado mas são facilmente realizáveis:** internacionalionalizar o projeto, com algumas pequenas alterações no código (que hoje recebe/trata apenas pt-br, pt_BR ou pt), possibilitando que comunidades de outros países o reutilizem._
 
@@ -8,8 +8,11 @@ _**Intenções que estão colocadas de lado mas são facilmente realizáveis:** 
 
 - Git, para baixar os arquivos com mais praticidade
 - **Ruby**, a linguagem de programação
-- [transifex-ruby](/tmaesaka/transifex-ruby), lib para autenticar e colher dados no Transifex
-- [nokogiri](/sparklemotion/nokogiri), lib para colher dados em páginas HTML
+- [Bundler](http://bundler.io), para empacotar alguma dependência
+- Bibliotecas de software
+ -  [transifex-ruby](/tmaesaka/transifex-ruby), lib para autenticar e colher dados no Transifex
+ - [nokogiri](/sparklemotion/nokogiri), lib para colher dados em páginas HTML
+ - [yamldiff](/alexandre-mbm/yamldiff), lib que extendemos para contar diferenças entre arquivos YAML
 
 # Instalar
 
@@ -20,12 +23,20 @@ Não é exatamente "instalação". Só das dependências, e colocar os arquivos 
 ```console
 $ sudo apt-get install git
 $ sudo apt-get install ruby ruby-nokogiri
+$ sudo apt-get install bundler
 
 $ cd TEMP_DIR/
 $ git clone https://github.com/tmaesaka/transifex-ruby.git
 $ cd transifex-ruby
 $ gem build transifex-ruby.gemspec
 $ sudo gem install transifex-ruby-0.0.4.gem
+
+$ cd TEMP_DIR/
+$ git clone https://github.com/alexandre-mbm/yamldiff.git
+$ cd yamldiff
+$ bundle
+$ gem build yamldiff.gemspec
+$ sudo gem install yamldiff-0.0.10.gem
 
 $ cd ~
 $ https://github.com/OSMBrasil/OSMBtranstats.git
@@ -57,6 +68,8 @@ $ ruby get_stats.rb > stats.txt
 
 Dedicamos esta ferramenta ao **domínio público** através de [CCO 1.0](https://creativecommons.org/publicdomain/zero/1.0/deed.pt_BR) (arquivo [LICENSE](LICENSE)).
 
-Nossas duas dependências diretas, transifex-ruby e nokogiri, são liberadas sob a [Expat License](http://en.wikipedia.org/wiki/Expat_License), também conhecida ambiguamente como [MIT License](http://choosealicense.com/licenses/mit/); existe mais de uma "licença do MIT".
+Nossas três [dependências diretas](WINDOWS.md) são liberadas sob a [Expat License](http://en.wikipedia.org/wiki/Expat_License), também conhecida ambiguamente como [MIT License](http://choosealicense.com/licenses/mit/); existe mais de uma "licença do MIT".
 
 Ruby 2.x está sob licença dupla: [Ruby License](http://www.ruby-lang.org/en/about/license.txt) / [FreeBSD License](http://pt.wikipedia.org/wiki/Licen%C3%A7a_BSD) (conhecida como 2-clause BSDL).
+
+Bundler é ferramenta disponibilizada sob a [Expat License](http://en.wikipedia.org/wiki/Expat_License).
