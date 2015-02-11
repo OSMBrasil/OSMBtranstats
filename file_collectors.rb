@@ -101,8 +101,8 @@ class GithubYAML_Collector < GithubCollector
         diff_errors_count = errors[:dest].length
         common_count = common.length
         @total_of_keys = diff_errors_count + common_count
-        @translated_keys = diff_errors_count - keys_missing_count
-        @untranslated_keys = keys_missing_count + common_count
+        @translated_keys = @total_of_keys - keys_missing_count
+        @untranslated_keys = keys_missing_count
     end
     def completed
         (@translated_keys.to_f / @total_of_keys) * 100
