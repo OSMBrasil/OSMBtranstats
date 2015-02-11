@@ -59,15 +59,15 @@ class TransifexParser < SpecializedParser
             stats = resource.stats(:pt_BR)
             message = percentage_formatted(stats.completed)
         else
-            translated_words = 0
-            untranslated_words = 0
+            translated_entities = 0
+            untranslated_entities = 0
             project.resources.each do |resource|
                 stats = resource.stats(:pt_BR)
-                translated_words += stats.translated_words
-                untranslated_words += stats.untranslated_words
+                translated_entities += stats.translated_entities
+                untranslated_entities += stats.untranslated_entities
             end
-            total_words = translated_words + untranslated_words
-            percent = (translated_words.to_f / total_words) * 100
+            total_entities = translated_entities + untranslated_entities
+            percent = (translated_entities.to_f / total_entities) * 100
             message = percentage_formatted(percent)
         end
         return name, message
