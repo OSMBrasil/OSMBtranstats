@@ -5,6 +5,8 @@ load 'noko_collectors.rb'
 load 'json_collectors.rb'
 load 'file_collectors.rb'
 
+load 'decorators.rb'
+
 config = YAML.load_file('config.yml')
 
 class ItemParser
@@ -151,7 +153,9 @@ class SourcesPrinter
         date = Time.new.strftime('%d-%m-%Y')
         @config["sources"].each do |item|
             parser = ItemParser.factory item
+            decorator = MediawikiDecorator.factory item
             name, message = parser.result
+            message = decorator.decorate_message(message)
             puts '|-'
             puts '|' + name
             puts '|' + message
